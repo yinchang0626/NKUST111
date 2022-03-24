@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NKUST
 {
-    public class SemesterService
+    public class SemesterService : Volo.Abp.DependencyInjection.ITransientDependency, ISemesterService
     {
         public SemesterService()
         {
@@ -20,13 +20,13 @@ namespace NKUST
             this.Students.Add(student);
         }
 
-        public void PrintStudentName() 
+        public void PrintStudentName()
         {
             Students.ForEach(x =>
             {
                 Console.WriteLine($"學生姓名：{x.FullName}");
             });
-           
+
         }
     }
 }

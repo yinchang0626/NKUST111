@@ -3,20 +3,22 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Volo.Abp.DependencyInjection;
 using System.Linq;
+using System;
 
 namespace NKUST;
 
 public class HelloWorldService : ITransientDependency
 {
+    private readonly ISemesterService semesterService;
+
     public ILogger<HelloWorldService> Logger { get; set; }
 
-    public SemesterService SemesterService { get; set; }
-
-    public HelloWorldService()
+    public HelloWorldService(
+        ISemesterService semesterService
+        )
     {
         Logger = NullLogger<HelloWorldService>.Instance;
-
-        SemesterService=new SemesterService();
+        this.semesterService=semesterService;
     }
 
     public Task SayHelloAsync()
@@ -26,17 +28,17 @@ public class HelloWorldService : ITransientDependency
             .ToList()
             .ForEach(i =>
             {
-                SemesterService.AddStudent(new Student()
+                semesterService.AddStudent(new Student()
                 {
                     No=System.DateTime.Now.Millisecond.ToString(),
                     FullName="Chang-"+i.ToString()
                 });
             });
 
-        SemesterService.PrintStudentName();
+        semesterService.PrintStudentName();
 
 
-
+        
 
 
         Logger.LogInformation("Hello World!");
