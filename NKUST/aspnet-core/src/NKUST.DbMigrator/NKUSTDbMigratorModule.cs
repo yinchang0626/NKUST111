@@ -7,8 +7,8 @@ namespace NKUST.DbMigrator;
 
 [DependsOn(
     typeof(AbpAutofacModule),
-    typeof(NKUSTEntityFrameworkCoreModule),
-    typeof(NKUSTApplicationContractsModule)
+    typeof(NKUSTEntityFrameworkCoreModule)//,
+    //typeof(NKUSTApplicationContractsModule)
     )]
 public class NKUSTDbMigratorModule : AbpModule
 {

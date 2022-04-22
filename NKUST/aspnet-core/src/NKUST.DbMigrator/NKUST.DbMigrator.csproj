@@ -29,7 +29,7 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Autofac" Version="5.2.0" />
-    <ProjectReference Include="..\NKUST.Application.Contracts\NKUST.Application.Contracts.csproj" />
+    <!--<ProjectReference Include="..\NKUST.Application.Contracts\NKUST.Application.Contracts.csproj" />-->
     <ProjectReference Include="..\NKUST.EntityFrameworkCore\NKUST.EntityFrameworkCore.csproj" />
   </ItemGroup>
 

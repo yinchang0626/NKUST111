@@ -1,4 +1,5 @@
-﻿using NKUST.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using NKUST.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +23,11 @@ namespace NKUST.Courses
         }
 
 
-        public List<Course> FindBySchoolName(string name)
+        public async Task<List<Course>> FindBySchoolNameAsync(string name)
         {
-            throw new NotImplementedException();
+            var query = await this.GetQueryableAsync();
+
+            return await query.Where(x => x.校名.Contains(name)).ToListAsync();
         }
     }
 }

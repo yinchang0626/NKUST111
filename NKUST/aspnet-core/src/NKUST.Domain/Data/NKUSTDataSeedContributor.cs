@@ -1,4 +1,5 @@
-﻿using NKUST.Data.Courses;
+﻿using NKUST.Courses;
+using NKUST.Data.Courses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,15 @@ namespace NKUST.Data
     public class NKUSTDataSeedContributor : IDataSeedContributor,Volo.Abp.DependencyInjection.ISingletonDependency
     {
         private readonly CoursesDataSeeder coursesDataSeeder;
+        private readonly ICourseRepository courseRepository;
 
         public NKUSTDataSeedContributor(
-            CoursesDataSeeder coursesDataSeeder)
+            CoursesDataSeeder coursesDataSeeder,
+            NKUST.Courses.ICourseRepository courseRepository
+            )
         {
             this.coursesDataSeeder=coursesDataSeeder;
+            this.courseRepository=courseRepository;
         }
         public async Task SeedAsync(DataSeedContext context)
         {

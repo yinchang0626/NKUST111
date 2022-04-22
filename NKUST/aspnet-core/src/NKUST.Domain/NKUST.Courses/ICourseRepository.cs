@@ -9,6 +9,6 @@ namespace NKUST.Courses
     public interface ICourseRepository:Volo.Abp.Domain.Repositories.IRepository<Course,Guid>
     {
 
-        List<Course> FindBySchoolName(string name);
+        Task<List<Course>> FindBySchoolNameAsync(string name);
     }
 }
