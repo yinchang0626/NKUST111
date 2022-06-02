@@ -20,6 +20,8 @@ namespace NKUST.Courses
         public string 必選修 { get; set; }
         public string 總修課人數 { get; set; }
 
+        public virtual ICollection<StudentCourse> StudentCourses { get; set; }
+
         public override string ToString()
         {
             return $"{校名}-{開課老師}-{系所名稱}-{課程名稱}";

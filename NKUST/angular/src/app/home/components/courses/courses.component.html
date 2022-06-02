@@ -1,0 +1,22 @@
+<p>courses works!</p>
+
+<form>
+    <input name="schoolName" [(ngModel)]="schoolNameInput"  >
+    <button class="btn" (click)="search()" value="查詢">查詢</button>
+</form>
+<table>
+  <tr>
+    <th>校名</th>
+    <th>系所名稱</th>
+    <th>課程名稱</th>
+    <th>開課老師</th>
+  </tr>
+  <ng-container *ngFor="let item of datas">
+    <tr>
+      <th>{{ item['校名'] }}</th>
+      <th>{{ item['系所名稱'] }}</th>
+      <th>{{ item['課程名稱'] }}</th>
+      <th>{{ item['開課老師'] }}</th>
+    </tr>
+  </ng-container>
+</table>

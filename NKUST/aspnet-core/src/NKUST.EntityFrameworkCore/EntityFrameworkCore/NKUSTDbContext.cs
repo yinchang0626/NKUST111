@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NKUST.Courses;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -55,6 +56,10 @@ public class NKUSTDbContext :
 
     public DbSet<Courses.Course> Courses { get; set; }
 
+    public DbSet<Courses.Student> Students { get; set; }
+
+    public DbSet<Courses.StudentCourse> StudentCourses { get; set; }
+
     public NKUSTDbContext(DbContextOptions<NKUSTDbContext> options)
         : base(options)
     {
@@ -84,5 +89,9 @@ public class NKUSTDbContext :
         //    b.ConfigureByConvention(); //auto configure for the base class props
         //    //...
         //});
+
+        builder
+            .Entity<StudentCourse>()
+            .HasKey(sc => new { sc.StudentId, sc.CourseId });
     }
 }
