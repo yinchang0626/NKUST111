@@ -24,7 +24,7 @@ namespace NKUST.Data
         }
         public async Task SeedAsync(DataSeedContext context)
         {
-            await coursesDataSeeder.ImportFromCsv(100);
+           // await coursesDataSeeder.ImportFromCsv(100);
         }
     }
 }
